@@ -1,0 +1,125 @@
+.container {
+    margin: 10rem auto;
+    max-width: 90vw;
+    min-height: 70vh;
+    background-color: #fff;
+
+    box-shadow: var(--shadow-dark);
+    border-radius: 2px;
+}
+
+.header {
+    //position: relative;
+
+    &__text {
+        //position: absolute;
+        padding: 2rem;
+        font-size: 4.5rem;
+        color: #FF3366;
+    }
+
+    &__user {}
+}
+
+.content {}
+
+.top-bar {
+
+    border-bottom: .5px solid var(--color-primary);
+    margin: 0 4rem;
+
+
+    &__list {
+        list-style: none;
+        display: flex;
+
+        justify-content: space-between;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__item {
+        &--book {
+            flex: 0 0 30%;
+        }
+
+        &--author {
+            flex: 0 0 30%;
+        }
+
+        &--pages {
+            flex: 0 0 20%;
+        }
+
+        &--status {
+            flex: 0 0 20%;
+        }
+    }
+}
+
+.book {
+    margin: 1rem 4rem;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        margin-bottom: 1rem;
+        padding: 2rem;
+
+        background-color: #fff;
+        box-shadow: var(--shadow-light);
+
+        border-radius: 4px;
+
+        justify-content: space-between;
+        text-align: center;
+        transition: all .5s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:not(:last-of-type) {}
+    }
+
+    &__item {
+        &--book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: 700;
+            flex: 0 0 30%;
+
+            & span {
+                //margin-left: 4rem;
+                flex: 0 0 80%;
+
+
+            }
+
+        }
+
+        &--author {
+            flex: 0 0 30%;
+        }
+
+        &--pages {
+            flex: 0 0 20%;
+        }
+
+        &--status {
+            flex: 0 0 20%;
+        }
+    }
+
+}
+
+.book__icon {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+
+    fill: rgba(192, 57, 43, 1.0);
+
+}
