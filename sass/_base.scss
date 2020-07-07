@@ -46,3 +46,15 @@ body {
 
     min-height: 100vh;
 }
+
+a,
+a:link,
+a:visited,
+a:active {
+    outline: none;
+    text-decoration: none;
+}
+
+a:focus {
+    transform: scale(1.01);
+}
