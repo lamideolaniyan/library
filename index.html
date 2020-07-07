@@ -94,15 +94,75 @@
             </div>
 
             <div class="add">
-                <a href="#" class="add-btn">
+                <a href="#popup" class="add-btn">
                     <svg class="add-btn__icon">
                         <use xlink:href="img/symbol-defs.svg#icon-plus"></use>
                     </svg>
                 </a>
                 <span>Add book</span>
             </div>
+
+            <div class="popup" id="popup">
+                <a href="#" class="popup__close">&times;</a>
+                <div class="form-div">
+                    <div class="popup__content">
+                        <div class="form-box">
+                            <form action="#" class="form">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary">
+                                        Enter book details
+                                    </h2>
+                                </div>
+
+                                <div class="form__group">
+                                    <input id="title" type="text" class="form__input" placeholder="Book title"
+                                        required />
+                                    <label for="title" class="form__label">Book title</label>
+                                </div>
+
+                                <div class="form__group">
+                                    <input id="author" type="text" class="form__input" placeholder="Book author"
+                                        required />
+                                    <label for="author" class="form__label">Book author</label>
+                                </div>
+                                <div class="form__group">
+                                    <input id="pages" type="number" class="form__input" placeholder="Pages" required />
+                                    <label for="pages" class="form__label">Pages</label>
+                                </div>
+
+
+                                <div class="form__group u-margin-bottom-medium">
+                                    <div class="form__radio-group">
+                                        <input type="radio" name="size" id="read" class="form__radio-input" />
+                                        <label for="read" class="form__radio-label">
+                                            <span class="form__radio-button"></span>
+                                            Read
+                                        </label>
+                                    </div>
+
+                                    <div class="form__radio-group">
+                                        <input type="radio" name="size" id="unread" class="form__radio-input" />
+                                        <label for="unread" class="form__radio-label">
+                                            <span class="form__radio-button"></span>
+                                            Not yet read
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form__group">
+                                    <button class="btn btn--green">Add book</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
+
+    <footer class="footer">
+        <a href="http://github.com/cyber-mat/calculator" target="_blank">&copy; Olamide Olaniyan</a>
+    </footer>
 
     <script src="js/app.js"></script>
 </body>
