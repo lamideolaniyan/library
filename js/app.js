@@ -20,8 +20,19 @@ const modelController = (function () {
       }
     },
 
-    testing() {
+    getBookArray() {
       return booksArray;
+    },
+
+    persistData() {
+      localStorage.setItem('books', JSON.stringify(booksArray));
+    },
+
+    getData() {
+      const storage = JSON.parse(localStorage.getItem('books'));
+
+      // If there's data in the local storage, spread(...) and push the array into books array
+      if (storage) booksArray.push(...storage);
     },
   };
 })();
@@ -136,7 +147,7 @@ const viewController = (function () {
 const appController = (function (modelCtrl, viewCtrl) {
   let userInput, title, author, pages, status;
   const dom = viewCtrl.dom;
-  const booksArray = modelCtrl.testing();
+  const booksArray = modelCtrl.getBookArray();
 
   // Set up event listener to display form
   dom.addBtn.addEventListener('click', () => {
@@ -169,6 +180,9 @@ const appController = (function (modelCtrl, viewCtrl) {
 
     // Render book
     viewCtrl.renderBook(booksArray);
+
+    // Persist books array in local storage
+    modelCtrl.persistData();
   });
 
   // Set up event listener for form close button
@@ -198,6 +212,21 @@ const appController = (function (modelCtrl, viewCtrl) {
 
       // Render updated book list
       viewCtrl.renderBook(booksArray);
+
+      // Persist books array in local storage
+      modelCtrl.persistData();
     }
+  });
+
+  // Set up event listener for page load
+  window.addEventListener('load', () => {
+    // Get data from local storage
+    modelCtrl.getData();
+
+    // Clear book div
+    dom.book.innerHTML = '';
+
+    // Render updated book list
+    viewCtrl.renderBook(booksArray);
   });
 })(modelController, viewController);
