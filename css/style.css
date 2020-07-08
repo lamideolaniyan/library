@@ -218,7 +218,7 @@ a:focus {
   .footer a:active {
     outline: none;
     text-decoration: none;
-    color: #000; }
+    color: var(--color-grey-dark-1); }
 
 .popup {
   background-color: rgba(0, 0, 0, 0.8);

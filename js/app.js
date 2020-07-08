@@ -8,6 +8,7 @@ const modelController = (function () {
     this.author = author;
     this.pages = pages;
     this.status = status;
+    this.id = booksArray.length === 0 ? 0 : booksArray[booksArray.length - 1].id + 1;
   };
 
   const booksArray = [];
@@ -43,6 +44,7 @@ const viewController = (function () {
     popupContent: document.querySelector('.popup__content'),
     popupClose: document.querySelector('.popup__close'),
     book: document.querySelector('.book'),
+    deleteBtn: document.querySelector('.book__icon--trash'),
   };
 
   return {
@@ -93,8 +95,9 @@ const viewController = (function () {
         author = bookObj.author;
         pages = bookObj.pages;
         status = bookObj.status;
+        id = bookObj.id;
 
-        html = `  <ul class="book__list">
+        html = `  <ul class="book__list" data-id="%ID%">
                     <li class="book__item--title">
                       <svg class="book__icon book__icon--quill">
                         <use xlink:href="img/symbol-defs.svg#icon-quill"></use>
@@ -118,6 +121,7 @@ const viewController = (function () {
         newHtml = newHtml.replace('%AUTHOR%', author);
         newHtml = newHtml.replace('%PAGES%', pages);
         newHtml = newHtml.replace('%STATUS%', status);
+        newHtml = newHtml.replace('%ID%', id);
 
         // Display data
         dom.book.insertAdjacentHTML('beforeend', newHtml);
@@ -130,8 +134,9 @@ const viewController = (function () {
   OVERALL APP CONTROLLER  
  */
 const appController = (function (modelCtrl, viewCtrl) {
-  let userInput, title, author, pages, status, booksArray;
+  let userInput, title, author, pages, status;
   const dom = viewCtrl.dom;
+  const booksArray = modelCtrl.testing();
 
   // Set up event listener to display form
   dom.addBtn.addEventListener('click', () => {
@@ -163,7 +168,6 @@ const appController = (function (modelCtrl, viewCtrl) {
     dom.book.innerHTML = '';
 
     // Render book
-    booksArray = modelCtrl.testing();
     viewCtrl.renderBook(booksArray);
   });
 
@@ -174,5 +178,26 @@ const appController = (function (modelCtrl, viewCtrl) {
 
     //Close form popup
     viewCtrl.clearPopup();
+  });
+
+  // Set up event listener for delete button
+  dom.book.addEventListener('click', (e) => {
+    if (e.target.matches('.delete__btn, .delete__btn *')) {
+      // Get ID of clicked book
+      const id = parseInt(e.target.closest('.book__list').dataset.id);
+
+      // Delete book from array
+      booksArray.forEach((book, ind) => {
+        if (book.id === id) {
+          booksArray.splice(ind, 1);
+        }
+      });
+
+      // Clear book div
+      dom.book.innerHTML = '';
+
+      // Render updated book list
+      viewCtrl.renderBook(booksArray);
+    }
   });
 })(modelController, viewController);
