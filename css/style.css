@@ -76,16 +76,29 @@ a:focus {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
     text-transform: uppercase; }
   .top-bar__item--title {
     flex: 0 0 30%; }
+    @media only screen and (max-width: 37.5em) {
+      .top-bar__item--title {
+        flex: 0 0 25%; } }
   .top-bar__item--author {
     flex: 0 0 30%; }
+    @media only screen and (max-width: 37.5em) {
+      .top-bar__item--author {
+        flex: 0 0 25%; } }
   .top-bar__item--pages {
     flex: 0 0 20%; }
+    @media only screen and (max-width: 37.5em) {
+      .top-bar__item--pages {
+        flex: 0 0 25%; } }
   .top-bar__item--status {
     flex: 0 0 20%; }
+    @media only screen and (max-width: 37.5em) {
+      .top-bar__item--status {
+        flex: 0 0 25%; } }
 
 .book {
   margin: 1rem 4rem; }
@@ -101,6 +114,7 @@ a:focus {
     box-shadow: var(--shadow-light);
     border-radius: 4px;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
     transition: all .5s; }
     .book__list:hover {
@@ -121,18 +135,30 @@ a:focus {
     justify-content: center;
     font-weight: 700;
     flex: 0 0 30%; }
+    @media only screen and (max-width: 37.5em) {
+      .book__item--title {
+        flex: 0 0 25%; } }
     .book__item--title span {
       flex: 0 0 80%; }
   .book__item--author {
     flex: 0 0 30%; }
+    @media only screen and (max-width: 37.5em) {
+      .book__item--author {
+        flex: 0 0 25%; } }
   .book__item--pages {
     flex: 0 0 20%; }
+    @media only screen and (max-width: 37.5em) {
+      .book__item--pages {
+        flex: 0 0 25%; } }
   .book__item--status {
     flex: 0 0 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all .5s; }
+    @media only screen and (max-width: 37.5em) {
+      .book__item--status {
+        flex: 0 0 25%; } }
     .book__item--status span {
       flex: 0 0 80%; }
 
@@ -293,6 +319,12 @@ a:focus {
 .form__radio-group {
   width: 49%;
   display: inline-block; }
+  @media only screen and (max-width: 37.5em) {
+    .form__radio-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      width: 100%; } }
 
 .form__radio-input {
   display: none; }
