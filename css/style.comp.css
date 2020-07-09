@@ -45,7 +45,8 @@ a:link,
 a:visited,
 a:active {
   outline: none;
-  text-decoration: none; }
+  text-decoration: none;
+  color: var(--color-grey-dark-2); }
 
 a:focus {
   transform: scale(1.01); }
@@ -299,6 +300,11 @@ a:focus {
 .btn-text:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
+
+.status-btn {
+  cursor: pointer; }
+  .status-btn:hover {
+    color: var(--color-primary-dark); }
 
 .container {
   max-width: 120rem;

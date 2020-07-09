@@ -56,6 +56,7 @@ const viewController = (function () {
     popupClose: document.querySelector('.popup__close'),
     book: document.querySelector('.book'),
     deleteBtn: document.querySelector('.book__icon--trash'),
+    statusBtn: document.querySelector('.status-btn'),
   };
 
   return {
@@ -118,7 +119,7 @@ const viewController = (function () {
                     <li class="book__item--author">%AUTHOR%</li>
                     <li class="book__item--pages">%PAGES%</li>
                     <li class="book__item--status">
-                      <span>%STATUS%</span>
+                      <span class="status-btn">%STATUS%</span>
                       <a href="#" class="delete__btn">
                         <svg class="book__icon book__icon--trash">
                           <use xlink:href="img/symbol-defs.svg#icon-trash"></use>
@@ -181,6 +182,11 @@ const appController = (function (modelCtrl, viewCtrl) {
     // Render book
     viewCtrl.renderBook(booksArray);
 
+    // if (status === 'Read') {
+    //   console.log('green');
+    //   dom.book.closest('.status-btn').style.color = 'green';
+    // }
+
     // Persist books array in local storage
     modelCtrl.persistData();
   });
@@ -194,8 +200,9 @@ const appController = (function (modelCtrl, viewCtrl) {
     viewCtrl.clearPopup();
   });
 
-  // Set up event listener for delete button
+  // Set up event listener for delete button and to toggle read status
   dom.book.addEventListener('click', (e) => {
+    // Check if target is delete btn
     if (e.target.matches('.delete__btn, .delete__btn *')) {
       // Get ID of clicked book
       const id = parseInt(e.target.closest('.book__list').dataset.id);
@@ -215,6 +222,15 @@ const appController = (function (modelCtrl, viewCtrl) {
 
       // Persist books array in local storage
       modelCtrl.persistData();
+    }
+
+    // Check if target is status btn
+    if (e.target.matches('.status-btn')) {
+      if (e.target.textContent === 'Read') {
+        e.target.textContent = 'Unread';
+      } else {
+        e.target.textContent = 'Read';
+      }
     }
   });
 

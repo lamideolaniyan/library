@@ -344,3 +344,11 @@
         transform: translateY(0);
     }
 }
+
+.status-btn {
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-primary-dark);
+    }
+}
