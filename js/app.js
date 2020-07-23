@@ -3,13 +3,15 @@
  */
 
 const modelController = (function () {
-  const Book = function (title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.id = booksArray.length === 0 ? 0 : booksArray[booksArray.length - 1].id + 1;
-  };
+  class Book {
+    constructor(title, author, pages, status) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.status = status;
+      this.id = booksArray.length === 0 ? 0 : booksArray[booksArray.length - 1].id + 1;
+    }
+  }
 
   const booksArray = [];
 
