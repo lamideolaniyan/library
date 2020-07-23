@@ -184,11 +184,6 @@ const appController = (function (modelCtrl, viewCtrl) {
     // Render book
     viewCtrl.renderBook(booksArray);
 
-    // if (status === 'Read') {
-    //   console.log('green');
-    //   dom.book.closest('.status-btn').style.color = 'green';
-    // }
-
     // Persist books array in local storage
     modelCtrl.persistData();
   });
